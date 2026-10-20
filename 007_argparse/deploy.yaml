@@ -1,0 +1,5 @@
+app_name: "payment-gateway"
+environment: "dev"
+replicas: 2
+cluster: "k8s-us-east-1"
+timeout_seconds: 30

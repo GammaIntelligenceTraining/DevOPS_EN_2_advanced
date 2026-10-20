@@ -1,0 +1,41 @@
+project_name: "payment-gateway"   # string
+port_number: 8080   # integer
+cpu_limit: 1.5    # float
+production_ready: true  # boolean
+debug_mode: false
+maintenance_window: null
+
+allowed_reions:
+  - "us-east-1"
+  - "us-east-2"
+  - "eu-central-1"
+
+target_ports: [80, 443, 8443]
+
+containers:
+  - name: "web-server"
+    image: "nginx:1.25-alpine"
+    ports:
+      - 80
+      - 443
+    resources:
+      memory: "512Mi"
+      cpu: "500m"
+  - name: "cache-proxy"
+    image: "redis:7-alpine"
+    ports:
+      - 6379
+    resources:
+      memory: "256Mi"
+      cpu: "250m"
+
+
+startup_script: |
+  #!/bin/bash
+  echo "Initializing worker node..."
+  systemctl restart docker
+
+release_notes: >
+  This release updates the backend microservice to path
+  CVE-2026-1012 and improves database connection polling.
+
