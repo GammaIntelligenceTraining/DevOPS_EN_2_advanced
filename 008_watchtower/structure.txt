@@ -1,0 +1,9 @@
+-- requirements.txt     - Python dependencies
+-- config.yaml          - Cluster endpoints and threshold
+
+-- config.py            - YAML configuration loader & validator
+-- logger.py            - Dual handler, logging to stream and file
+-- prober.py            - Probe gateway and latency measurement
+-- remediation.py       - Automated recovery healing engine
+-- main.py              - Application Entrypoint & CLI orchestrator
+-- watchtower.py        - Executable app launcher

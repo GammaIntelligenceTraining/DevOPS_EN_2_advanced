@@ -1,0 +1,15 @@
+agent_name: "watchtower-us-east"
+timeout_sec: 2.5
+log_file: "watchtower_audit.log"
+
+endpoints:
+  - name: "Public Gateway"
+    url: "https://api.github.com"
+
+  - name: "Health Check Probe"
+    url: "https://ab-as-httpstatus-app1.azurewebsites.net/200"
+
+  - name: "Degraded Internal Service"
+    url: "https://ab-as-httpstatus-app1.azurewebsites.net/500"
+    remediation_command: "python -c \"import pathlib; pathlib.Path('worker.lock').unlink(missing_ok=True); print('Flushed worker lockfile')\""
+    
